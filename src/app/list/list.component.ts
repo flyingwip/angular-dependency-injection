@@ -24,10 +24,10 @@ export class ListComponent implements OnInit {
   
   items:Array<any>;
 
-  constructor( private dataservice : DataService, private logDebugger: LogDebugger) { }
+  constructor( private dataservice : DataService) { }
 
   ngOnInit() {
-  	this.logDebugger.debug('Getting items...');
+  	
   	this.items = this.dataservice.getItems();
   }
 
