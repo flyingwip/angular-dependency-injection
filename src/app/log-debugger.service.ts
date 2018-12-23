@@ -1,10 +1,12 @@
+import { ConsoleService } from './console.service';
+
 export class LogDebugger { 
 
-  constructor(private enabled: boolean) {}
+  constructor(private consoleService: ConsoleService  ,private enabled: boolean) {}
 
   debug(message) {
     if (this.enabled) {
-      console.log(`DEBUG: ${message}`);
+      this.consoleService.log(`DEBUG: ${message}`);
     }
   }
 }
