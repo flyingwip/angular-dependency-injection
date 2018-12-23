@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService }  from '../data.service';
+import { OtherDataService }  from '../other-data.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.sass']
+  styleUrls: ['./list.component.sass'],
+  providers : [
+  {provide:DataService, useClass:OtherDataService}
+  ]
 })
 export class ListComponent implements OnInit {
   
   items:Array<any>;
 
-  constructor() { }
+  constructor( private dataservice : DataService) { }
 
   ngOnInit() {
 
-  	items:Array<any> = [
-	    { id: 0, name: 'Pascal Precht', country: 'Germany'},
-	    { id: 1, name: 'Christoph Burgdorf', country: 'Germany'},
-	    { id: 2, name: 'Thomas Burleson', country: 'United States'}
-	  ]
+  	this.items = this.dataservice.getItems();
   }
 
 }
